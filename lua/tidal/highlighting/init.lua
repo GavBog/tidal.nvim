@@ -23,11 +23,11 @@ local function handleMessages()
   local diff = osc.diffEventLists(osc.activeMessages, osc.messageBuffer)
 
   for _, evt in ipairs(diff.added) do
-    highlights.addHighlight(evt.id, evt.buf, evt.markerId, evt.row, evt.colStart, evt.colEnd)
+    highlights.addHighlight(evt.id, evt.buf, evt.markerId)
   end
 
   for _, evt in ipairs(diff.removed) do
-    highlights.removeHighlight(evt.buf, evt.markerId, evt.row, evt.colStart, evt.colEnd)
+    highlights.removeHighlight(evt.buf, evt.markerId)
   end
 
   osc.activeMessages = merge_arrays_of_tables(diff.active, diff.added)

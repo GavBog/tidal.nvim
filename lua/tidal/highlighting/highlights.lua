@@ -31,7 +31,7 @@ end
 function Highlights.addHighlight(id, buf, markerId)
   local extMark = vim.api.nvim_buf_get_extmark_by_id(buf, Marker.ns, markerId, { details = true })
 
-  if #extMark > 0 and extMark[1] > 0 and extMark[2] > 0 then
+  if #extMark > 0 and extMark[1] and extMark[2] then
     -- Create Highlight
     vim.api.nvim_buf_set_extmark(buf, Marker.ns, extMark[1], extMark[2], {
       end_col = extMark[3].end_col,
@@ -62,7 +62,7 @@ end
 function Highlights.removeHighlight(buf, markerId)
   local extMark = vim.api.nvim_buf_get_extmark_by_id(buf, Marker.ns, markerId, { details = true })
 
-  if #extMark > 0 and extMark[1] > 0 and extMark[2] > 0 then
+  if #extMark > 0 and extMark[1] and extMark[2] then
     -- Create Highlight
     vim.api.nvim_buf_set_extmark(buf, Marker.ns, extMark[1], extMark[2], {
       end_col = extMark[3].end_col,
