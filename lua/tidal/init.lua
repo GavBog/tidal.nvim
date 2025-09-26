@@ -29,12 +29,12 @@ local function setup_user_commands()
   end, { desc = "Launch Tidal instance" })
   vim.api.nvim_create_user_command("TidalNotification", function()
     if state.ghci then
-      state.ghci:showNotificationBuffer("haskell")
+      state.ghci:showNotificationBuffer("tidal_post")
     end
   end, { desc = "Launch Tidal Notification Buffer" })
   vim.api.nvim_create_user_command("SuperColliderNotification", function()
     if state.sclang then
-      state.sclang:showNotificationBuffer("supercollider")
+      state.sclang:showNotificationBuffer("sc_post")
     end
   end, { desc = "Launch Tidal Notification Buffer" })
   vim.api.nvim_create_user_command("TidalQuit", api.exit_tidal, { desc = "Quit Tidal instance" })
@@ -69,7 +69,7 @@ local function setup_autocmds()
     end,
   })
 
-  vim.api.nvim_create_autocmd({ "Filetype" }, {
+  vim.api.nvim_create_autocmd({ "FileType" }, {
     group = "Tidal",
     pattern = { "supercollider" },
     callback = function()
